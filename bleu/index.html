@@ -19,16 +19,16 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
 </script>
 <style>
   /* =====================================================================
-     Facturation CNSS — interface « bleu clair »
-     Light sky-blue surfaces, one blue accent family, generous rounding.
+     Facturation CNSS : interface bleue
+     One blue accent. Shape rule: containers 20px, controls 12px, buttons pill.
      ===================================================================== */
   :root{
     --bg:#D9E0EA; --surface:#E9EDF3; --surface-2:#F3F5F8; --surface-3:#D2DAE5;
     --line:#BAC6D5; --line-strong:#8496AD;
-    --ink:#000000; --ink-2:#0F1724; --ink-3:#2A3647;
+    --ink:#05080F; --ink-2:#121A28; --ink-3:#2A3647;
     --brand:#1B4DBF; --brand-deep:#143C99; --brand-tint:#C9D8F2; --brand-ink:#0F348A; --brand-glow:rgba(27,77,191,.25);
-    --grad-from:#1B4DBF; --grad-to:#1B4DBF; --sky:#9DB7DE;
-    --side:#E3E8EF; --side-line:#C3CEDC; --side-ink:#000000; --side-ink-2:#2A3647;
+    --grad-from:#1B4DBF; --grad-to:#1B4DBF; --sky:#9DB7DE; --on-brand:#FFFFFF; --on-brand-2:rgba(255,255,255,.82);
+    --side:#E3E8EF; --side-line:#C3CEDC; --side-ink:#05080F; --side-ink-2:#2A3647;
     --amber:#723A00; --amber-tint:#F0DEC2; --green:#0B5230; --green-tint:#C9E5D4; --red:#9A120B; --red-tint:#F2D5D2;
     --sh-xs:0 1px 1px rgba(20,35,60,.10);
     --sh-sm:0 1px 2px rgba(20,35,60,.10);
@@ -36,7 +36,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
     --sh-lg:0 2px 6px rgba(20,35,60,.12), 0 24px 50px -24px rgba(20,35,60,.40);
     --font:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --mono:'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
-    --r-lg:22px; --r:18px; --r-md:14px; --r-sm:12px; --r-xs:8px;
+    --r-lg:20px; --r:16px; --r-md:14px; --r-sm:12px; --r-xs:8px;
     --ease:cubic-bezier(.2,.8,.2,1);
     --side-w:256px; --head-h:76px;
     --z-head:20; --z-side:30; --z-modal:80; --z-toast:90;
@@ -46,10 +46,10 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
     :root:not([data-theme="light"]){
       --bg:#0A1120; --surface:#111B30; --surface-2:#15213A; --surface-3:#1A2844;
       --line:#22314F; --line-strong:#30436A;
-      --ink:#E6EDFA; --ink-2:#A8B6D0; --ink-3:#6F7FA0;
+      --ink:#E9EFFA; --ink-2:#B4C1D8; --ink-3:#8796B4;
       --brand:#6EA2FF; --brand-deep:#8DB6FF; --brand-tint:#172A50; --brand-ink:#9CC0FF; --brand-glow:rgba(110,162,255,.25);
-      --grad-from:#3D74E6; --grad-to:#3D74E6; --sky:#3F7FD9;
-      --side:#0F182C; --side-line:#22314F; --side-ink:#A8B6D0; --side-ink-2:#6F7FA0;
+      --grad-from:#3D74E6; --grad-to:#3D74E6; --sky:#3F7FD9; --on-brand:#06122B; --on-brand-2:rgba(6,18,43,.78);
+      --side:#0F182C; --side-line:#22314F; --side-ink:#D5DEEE; --side-ink-2:#8796B4;
       --amber:#E8A862; --amber-tint:#2E2214; --green:#6BCB98; --green-tint:#12291E; --red:#F48D84; --red-tint:#361B1A;
       --sh-xs:none; --sh-sm:0 1px 2px rgba(0,0,0,.4); --sh-md:0 16px 36px -16px rgba(0,0,0,.75); --sh-lg:0 34px 70px -26px rgba(0,0,0,.85);
       color-scheme:dark;
@@ -58,10 +58,10 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   :root[data-theme="dark"]{
     --bg:#0A1120; --surface:#111B30; --surface-2:#15213A; --surface-3:#1A2844;
     --line:#22314F; --line-strong:#30436A;
-    --ink:#E6EDFA; --ink-2:#A8B6D0; --ink-3:#6F7FA0;
+    --ink:#E9EFFA; --ink-2:#B4C1D8; --ink-3:#8796B4;
     --brand:#6EA2FF; --brand-deep:#8DB6FF; --brand-tint:#172A50; --brand-ink:#9CC0FF; --brand-glow:rgba(110,162,255,.25);
-    --grad-from:#3D74E6; --grad-to:#3D74E6; --sky:#3F7FD9;
-    --side:#0F182C; --side-line:#22314F; --side-ink:#A8B6D0; --side-ink-2:#6F7FA0;
+    --grad-from:#3D74E6; --grad-to:#3D74E6; --sky:#3F7FD9; --on-brand:#06122B; --on-brand-2:rgba(6,18,43,.78);
+    --side:#0F182C; --side-line:#22314F; --side-ink:#D5DEEE; --side-ink-2:#8796B4;
     --amber:#E8A862; --amber-tint:#2E2214; --green:#6BCB98; --green-tint:#12291E; --red:#F48D84; --red-tint:#361B1A;
     --sh-xs:none; --sh-sm:0 1px 2px rgba(0,0,0,.4); --sh-md:0 16px 36px -16px rgba(0,0,0,.75); --sh-lg:0 34px 70px -26px rgba(0,0,0,.85);
     color-scheme:dark;
@@ -95,40 +95,38 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
 
   .sidebar{
     position:sticky; top:14px; height:calc(100dvh - 28px); z-index:var(--z-side);
-    background:var(--side); color:var(--side-ink); border:1px solid var(--side-line); border-radius:26px; box-shadow:var(--sh-md);
+    background:var(--side); color:var(--side-ink); border:1px solid var(--side-line); border-radius:var(--r-lg); box-shadow:var(--sh-sm);
     display:flex; flex-direction:column; padding:18px 14px 14px; gap:20px; overflow:hidden;
   }
-  .sidebar::before{content:""; position:absolute; inset:0 0 auto 0; height:150px; pointer-events:none;
-    display:none;}
   .side-brand{position:relative; display:flex; flex-direction:column; gap:14px; padding:2px 4px 16px; border-bottom:1px solid var(--side-line);}
-  .side-logo{background:#fff; border:1px solid #E3EBF7; border-radius:18px; padding:8px 12px; display:flex; align-items:center; justify-content:center; height:62px; box-shadow:var(--sh-sm);}
+  .side-logo{background:#fff; border:1px solid #E3EBF7; border-radius:var(--r-md); padding:8px 12px; display:flex; align-items:center; justify-content:center; height:62px; box-shadow:var(--sh-sm);}
   .side-logo img{max-height:44px; max-width:100%; width:auto;}
   .side-app{color:var(--ink); font-weight:600; font-size:1.06rem; letter-spacing:-.02em;}
-  .side-org{color:var(--side-ink-2); font-size:.76rem; margin-top:1px;}
+  .side-org{color:var(--side-ink-2); font-size:.8rem; margin-top:1px;}
   .side-nav{display:flex; flex-direction:column; gap:4px;}
-  .side-label{font-size:.7rem; color:var(--side-ink-2); font-weight:500; padding:0 12px 8px; letter-spacing:.02em;}
+  .side-label{font-size:.76rem; color:var(--side-ink-2); font-weight:500; padding:0 12px 8px; letter-spacing:.02em;}
   .side-nav button{
     position:relative; display:flex; align-items:center; gap:11px; width:100%;
     background:none; border:none; color:var(--side-ink); font-family:inherit; font-size:.96rem; font-weight:600;
-    padding:10px 12px; border-radius:14px; cursor:pointer; text-align:left;
+    padding:10px 12px; border-radius:var(--r-sm); cursor:pointer; text-align:left;
     transition:background .2s var(--ease), color .2s var(--ease), box-shadow .2s var(--ease), transform .1s var(--ease);
   }
   .side-nav button svg{width:18px; height:18px; color:var(--brand);}
   .side-nav button:hover{background:var(--brand-tint); color:var(--brand-ink);}
   .side-nav button:active{transform:scale(.985);}
-  .side-nav button.active{background:var(--brand); color:#fff; box-shadow:var(--sh-sm);}
-  .side-nav button.active svg{color:#fff;}
+  .side-nav button.active{background:var(--brand); color:var(--on-brand); box-shadow:var(--sh-sm);}
+  .side-nav button.active svg{color:var(--on-brand);}
   .side-nav .count{margin-left:auto; font-family:var(--mono); font-size:.7rem; color:var(--brand-ink); background:var(--brand-tint); padding:1px 8px; border-radius:20px;}
-  .side-nav button.active .count{background:rgba(255,255,255,.22); color:#fff;}
+  .side-nav button.active .count{background:color-mix(in srgb, var(--on-brand) 18%, transparent); color:var(--on-brand);}
   .side-nav .count:empty{display:none;}
   .side-bottom{margin-top:auto; display:flex; flex-direction:column; gap:10px;}
-  .side-foot{font-size:.75rem; color:var(--ink-2); padding:12px 14px; border-radius:16px; line-height:1.45;
+  .side-foot{font-size:.8rem; color:var(--ink-2); padding:12px 14px; border-radius:var(--r-md); line-height:1.45;
     background:var(--surface-3);}
   .side-foot b{display:block; color:var(--ink); font-weight:600; margin-bottom:3px;}
   .side-foot .dot{display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px; vertical-align:1px;}
   .theme-seg{display:flex; padding:4px; gap:2px; background:var(--surface-3); border-radius:999px;}
   .theme-seg button{flex:1; display:inline-flex; align-items:center; justify-content:center; gap:5px; height:30px; border:none; background:none; border-radius:999px;
-    font-family:inherit; font-size:.75rem; font-weight:500; color:var(--ink-3); cursor:pointer; transition:all .2s var(--ease);}
+    font-family:inherit; font-size:.8rem; font-weight:600; color:var(--ink-2); cursor:pointer; transition:all .2s var(--ease);}
   .theme-seg button svg{width:13px; height:13px;}
   .theme-seg button:hover{color:var(--ink);}
   .theme-seg button.on{background:var(--surface); color:var(--brand-ink); box-shadow:var(--sh-sm);}
@@ -154,9 +152,9 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
 
   /* =================== Buttons =================== */
   button.btn{
-    display:inline-flex; align-items:center; justify-content:center; gap:7px; font-family:inherit; font-size:.85rem; font-weight:500;
+    display:inline-flex; align-items:center; justify-content:center; gap:7px; font-family:inherit; font-size:.88rem; font-weight:600;
     height:38px; padding:0 16px; border-radius:999px; border:1px solid transparent; cursor:pointer;
-    background:var(--brand); color:#fff; white-space:nowrap;
+    background:var(--brand); color:var(--on-brand); white-space:nowrap;
     box-shadow:var(--sh-sm);
     transition:background .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease), box-shadow .18s var(--ease), transform .1s var(--ease);
   }
@@ -169,7 +167,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   button.btn.danger{background:transparent; border-color:transparent; color:var(--red); box-shadow:none;}
   button.btn.danger:hover{background:var(--red-tint); filter:none; box-shadow:none;}
   button.btn:disabled{opacity:.42; cursor:not-allowed; box-shadow:none;}
-  button.btn.small{height:32px; padding:0 12px; font-size:.79rem;}
+  button.btn.small{height:32px; padding:0 12px; font-size:.82rem;}
   button.btn.big{height:42px; padding:0 18px; font-size:.9rem;}
   button.btn.icon-only{width:38px; padding:0;}
   button.btn.small.icon-only{width:32px;}
@@ -179,12 +177,12 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .link-btn:hover{text-decoration-color:currentColor;}
 
   /* =================== Cards =================== */
-  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--sh-md); margin-bottom:18px;}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--sh-xs); margin-bottom:18px;}
   .card-head{display:flex; align-items:flex-start; gap:13px; padding:20px 24px 0;}
-  .card-icon{width:38px; height:38px; border-radius:13px; color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0;
-    background:var(--brand); box-shadow:var(--sh-sm);}
+  .card-icon{width:38px; height:38px; border-radius:var(--r-sm); color:var(--brand-ink); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    background:var(--brand-tint);}
   .card-icon svg{width:18px; height:18px;}
-  .card-title{font-size:1.02rem; font-weight:600; letter-spacing:-.02em; line-height:1.3;}
+  .card-title{font-size:1.08rem; font-weight:600; letter-spacing:-.02em; line-height:1.3;}
   .card-desc{font-size:.88rem; color:var(--ink-2); margin-top:2px;}
   .card-head .aside{margin-left:auto; display:flex; align-items:center; gap:8px; padding-top:4px;}
   .card-body{padding:18px 24px 24px;}
@@ -227,7 +225,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .subsection .hint{font-weight:400;}
 
   /* =================== Badges / messages =================== */
-  .badge{display:inline-flex; align-items:center; gap:7px; padding:4px 10px; border-radius:999px; font-size:.74rem; font-weight:500; white-space:nowrap;}
+  .badge{display:inline-flex; align-items:center; gap:7px; padding:4px 10px; border-radius:999px; font-size:.8rem; font-weight:600; white-space:nowrap;}
   .badge .bdot{width:6px; height:6px; border-radius:50%;}
   .badge.ok{background:var(--green-tint); color:var(--green);} .badge.ok .bdot{background:var(--green);}
   .badge.ai{background:var(--brand-tint); color:var(--brand-ink);} .badge.ai .bdot{background:var(--brand);}
@@ -256,16 +254,16 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .dropzone.drag{border-style:solid;}
   .dropzone input{display:none;}
   .dropzone .up{width:54px; height:54px; margin:0 auto 14px; border-radius:18px; background:var(--brand); border:none;
-    display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:var(--sh-sm); transition:transform .25s var(--ease);}
+    display:flex; align-items:center; justify-content:center; color:var(--on-brand); box-shadow:var(--sh-sm); transition:transform .25s var(--ease);}
   .dropzone:hover .up, .dropzone.drag .up{transform:translateY(-3px);}
   .dropzone strong{color:var(--ink); font-weight:600;}
   .dropzone .formats{display:inline-flex; gap:6px; margin-top:14px;}
   .dropzone .formats span{font-family:var(--mono); font-size:.68rem; color:var(--brand-ink); border:1px solid color-mix(in srgb, var(--brand) 25%, transparent); border-radius:999px; padding:2px 9px; background:var(--surface);}
-  .or-row{display:flex; align-items:center; gap:14px; margin-top:16px; color:var(--ink-3); font-size:.78rem;}
+  .or-row{display:flex; align-items:center; gap:14px; margin-top:16px; color:var(--ink-2); font-size:.82rem;}
   .or-row::before, .or-row::after{content:""; flex:1; height:1px; background:var(--line);}
   .manual-row{display:flex; justify-content:center; margin-top:14px;}
   .file-row{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
-  .file-ico{width:44px; height:44px; border-radius:14px; background:var(--brand-tint); color:var(--brand); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .file-ico{width:44px; height:44px; border-radius:var(--r-sm); background:var(--brand-tint); color:var(--brand-ink); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
   .file-meta{min-width:0; flex:1;}
   .file-name{font-weight:600; font-size:.9rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   .file-sub{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:4px;}
@@ -274,7 +272,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   /* Items table */
   .items-count{font-family:var(--mono); font-size:.72rem; color:var(--brand-ink); background:var(--brand-tint); padding:3px 10px; border-radius:20px;}
   table.items{width:100%; min-width:540px; border-collapse:separate; border-spacing:0; font-size:.92rem;}
-  table.items th{text-align:left; font-size:.75rem; color:var(--ink-2); font-weight:600; padding:10px 10px; background:var(--surface-2);
+  table.items th{text-align:left; font-size:.8rem; color:var(--ink-2); font-weight:600; padding:10px 10px; background:var(--surface-2);
     border-top:1px solid var(--line); border-bottom:1px solid var(--line); white-space:nowrap;}
   table.items th:first-child{padding-left:24px;} table.items th:last-child{padding-right:16px;}
   table.items th.r{text-align:right;}
@@ -307,24 +305,23 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .sum{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; margin-top:20px;}
   .sum > div{background:var(--surface-2); padding:13px 16px; border-radius:var(--r-md); border:1px solid var(--line);}
   .sum > div.main{background:var(--brand); border-color:transparent; box-shadow:var(--sh-sm);}
-  .sum .main .k{color:rgba(255,255,255,.8);}
-  .sum .k{display:block; font-size:.72rem; color:var(--ink-3); margin-bottom:3px;}
+  .sum .main .k{color:var(--on-brand-2);}
+  .sum .k{display:block; font-size:.8rem; color:var(--ink-2); margin-bottom:3px;}
   .sum .v{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.95rem; font-weight:500; color:var(--ink); white-space:nowrap;}
-  .sum .main .v{color:#fff; font-size:1.1rem;}
+  .sum .main .v{color:var(--on-brand); font-size:1.1rem;}
 
   /* Live preview */
   .preview-pane{position:sticky; top:calc(var(--head-h) + 24px);}
   @media(max-width:1280px){ .preview-pane{position:static;} }
   .preview-head{display:flex; align-items:center; gap:12px; margin-bottom:12px;}
   .preview-title{font-size:.92rem; font-weight:600; letter-spacing:-.01em;}
-  .preview-sub{font-size:.76rem; color:var(--ink-3);}
-  .live{margin-left:auto; display:inline-flex; align-items:center; gap:7px; font-size:.74rem; color:var(--ink-3);}
+  .preview-sub{font-size:.82rem; color:var(--ink-3);}
+  .live{margin-left:auto; display:inline-flex; align-items:center; gap:7px; font-size:.8rem; color:var(--ink-3);}
   .live i{width:7px; height:7px; border-radius:50%; background:var(--line-strong);}
   .workspace[data-state="ready"] .live{color:var(--green);}
-  .workspace[data-state="ready"] .live i{background:var(--green); box-shadow:0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent); animation:pulse 2s ease-in-out infinite;}
-  @keyframes pulse{50%{box-shadow:0 0 0 5px color-mix(in srgb, var(--green) 8%, transparent);}}
+  .workspace[data-state="ready"] .live i{background:var(--green); box-shadow:0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent);}
   .paper-wrap{
-    border-radius:26px; padding:22px; border:1px solid var(--line); overflow:hidden;
+    border-radius:var(--r-lg); padding:22px; border:1px solid var(--line); overflow:hidden;
     background-color:color-mix(in srgb, var(--sky) 10%, var(--surface-3));
     background-image:radial-gradient(color-mix(in srgb, var(--ink-3) 22%, transparent) 1px, transparent 1px);
     background-size:16px 16px;
@@ -352,32 +349,32 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   /* =================== History & clients =================== */
   .kpis{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; margin-bottom:18px;}
   @media(max-width:1100px){ .kpis{grid-template-columns:repeat(2, minmax(0,1fr));} }
-  .kpi{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:18px 20px; box-shadow:var(--sh-md);}
-  .kpi.hero{background:var(--brand); border-color:transparent; color:#fff; box-shadow:var(--sh-md);}
-  .kpi.hero .k, .kpi.hero .s, .kpi.hero .v small{color:rgba(255,255,255,.8);} .kpi.hero .k svg{color:#fff;}
-  .kpi .k{font-size:.78rem; color:var(--ink-2); font-weight:500; display:flex; align-items:center; gap:7px;}
+  .kpi{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:18px 20px; box-shadow:var(--sh-xs);}
+  .kpi.hero{background:var(--brand); border-color:transparent; color:var(--on-brand); box-shadow:var(--sh-sm);}
+  .kpi.hero .k, .kpi.hero .s, .kpi.hero .v small{color:var(--on-brand-2);} .kpi.hero .k svg{color:var(--on-brand);}
+  .kpi .k{font-size:.84rem; color:var(--ink-2); font-weight:500; display:flex; align-items:center; gap:7px;}
   .kpi .k svg{width:15px; height:15px; color:var(--brand);}
   .kpi .v{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:1.5rem; font-weight:500; letter-spacing:-.03em; margin-top:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .kpi .v small{font-size:.8rem; color:var(--ink-3); margin-left:4px; letter-spacing:0;}
-  .kpi .s{font-size:.74rem; color:var(--ink-3); margin-top:2px;}
+  .kpi .s{font-size:.8rem; color:var(--ink-3); margin-top:2px;}
   .toolbar{display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:16px 20px; border-bottom:1px solid var(--line);}
   .toolbar .badge-row{margin-left:auto;}
   table.list{width:100%; min-width:760px; border-collapse:separate; border-spacing:0; font-size:.92rem;}
-  table.list th{padding:10px 14px; background:var(--surface-2); border-bottom:1px solid var(--line); text-align:left; font-size:.75rem; color:var(--ink-2); font-weight:600; white-space:nowrap;}
+  table.list th{padding:10px 14px; background:var(--surface-2); border-bottom:1px solid var(--line); text-align:left; font-size:.8rem; color:var(--ink-2); font-weight:600; white-space:nowrap;}
   table.list th:first-child, table.list td:first-child{padding-left:20px;}
   table.list td{padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:middle;}
   table.list tbody tr:last-child td{border-bottom:none;}
   table.list tbody tr{transition:background .15s;}
   table.list tbody tr:hover td{background:var(--surface-2);}
-  table.list th.num{font-family:inherit; font-size:.73rem;}
+  table.list th.num{font-family:inherit; font-size:.8rem;}
   table.list .num{text-align:right; font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap; font-size:.82rem;}
   table.list .inv-id{font-family:var(--mono); font-size:.8rem; font-weight:500; white-space:nowrap;}
   table.list .muted{color:var(--ink-2);}
   table.list .strong{font-weight:500;}
-  table.list .sub{display:block; font-size:.76rem; color:var(--ink-3); margin-top:1px;}
+  table.list .sub{display:block; font-size:.8rem; color:var(--ink-3); margin-top:1px;}
   .row-actions{display:flex; gap:2px; justify-content:flex-end; flex-wrap:nowrap;}
   .empty{color:var(--ink-2); font-size:.9rem; padding:56px 16px 52px; text-align:center;}
-  .empty .big-i{width:62px; height:62px; margin:0 auto 16px; color:#fff; background:var(--brand); border-radius:20px; box-shadow:var(--sh-sm); display:flex; align-items:center; justify-content:center;}
+  .empty .big-i{width:62px; height:62px; margin:0 auto 16px; color:var(--brand-ink); background:var(--brand-tint); border-radius:var(--r-md); display:flex; align-items:center; justify-content:center;}
   .empty .big-i svg{width:26px; height:26px;}
   .empty .t{font-weight:600; color:var(--ink); font-size:.98rem; margin-bottom:4px;}
   .empty p{margin:0 auto 18px; max-width:46ch; color:var(--ink-3); font-size:.84rem;}
@@ -386,10 +383,10 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .name-cell{display:flex; align-items:center;}
 
   .dirbar{display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:16px 18px; margin-bottom:18px; border-radius:var(--r-lg);
-    background:var(--surface); border:1px solid var(--line); box-shadow:var(--sh-md);}
-  .dirbar .d-ico{width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff;
-    background:var(--brand);}
-  .dirbar.warn .d-ico{background:#9A5410;}
+    background:var(--surface); border:1px solid var(--line); box-shadow:var(--sh-xs);}
+  .dirbar .d-ico{width:44px; height:44px; border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--brand-ink);
+    background:var(--brand-tint);}
+  .dirbar.warn .d-ico{background:var(--amber-tint); color:var(--amber);}
   .dirbar .d-txt{flex:1; min-width:240px;}
   .dirbar .d-t{font-weight:600; font-size:.92rem;}
   .dirbar .d-s{font-size:.8rem; color:var(--ink-3); margin-top:2px;}
@@ -406,7 +403,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .modal-bg{position:fixed; inset:0; background:rgba(14,27,51,.42); backdrop-filter:blur(3px);
     display:flex; align-items:flex-start; justify-content:center; padding:56px 14px; overflow:auto; z-index:var(--z-modal); animation:fade .2s ease both;}
   @keyframes fade{from{opacity:0;} to{opacity:1;}}
-  .modal-box{background:var(--surface); border-radius:26px; max-width:560px; width:100%; padding:28px 30px; box-shadow:var(--sh-lg); border:1px solid var(--line); animation:pop .25s var(--ease) both;}
+  .modal-box{background:var(--surface); border-radius:var(--r-lg); max-width:560px; width:100%; padding:28px 30px; box-shadow:var(--sh-lg); border:1px solid var(--line); animation:pop .25s var(--ease) both;}
   @keyframes pop{from{opacity:0; transform:translateY(-8px) scale(.985);} to{opacity:1; transform:none;}}
   .modal-box.wide{max-width:900px; background:var(--surface-3); padding:20px;}
   .modal-box.wide .inv-doc{box-shadow:var(--sh-md);}
@@ -418,7 +415,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .amb-item .q{font-size:.86rem; margin-bottom:7px; color:var(--ink); font-weight:500;}
   .amb-item .info-box{background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r-sm); padding:10px 12px; font-size:.82rem; color:var(--ink-2);}
   .toast-root{position:fixed; right:22px; bottom:22px; z-index:var(--z-toast); display:flex; flex-direction:column; gap:10px; max-width:min(400px, calc(100vw - 32px));}
-  .toast{background:var(--ink); color:var(--surface); padding:12px 18px; border-radius:16px; font-size:.84rem; box-shadow:var(--sh-lg); animation:rise .3s var(--ease) both;}
+  .toast{background:var(--ink); color:var(--surface); padding:12px 18px; border-radius:var(--r-md); font-size:.88rem; box-shadow:var(--sh-lg); animation:rise .3s var(--ease) both;}
   .toast.error{background:var(--red); color:#fff;}
   .toast.out{opacity:0; transform:translateY(6px); transition:all .25s var(--ease);}
 
@@ -426,7 +423,6 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   @media(max-width:960px){
     .app{grid-template-columns:minmax(0,1fr); padding:0; gap:0;}
     .sidebar{position:sticky; top:0; height:auto; flex-direction:row; align-items:center; gap:12px; padding:10px 14px; border-radius:0 0 22px 22px; border-width:0 0 1px;}
-    .sidebar::before{display:none;}
     .side-bottom{display:none;}
     .main-head{border-radius:0;}
     .side-brand{flex-direction:row; align-items:center; padding:0; border:none; gap:10px;}
@@ -674,7 +670,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
                   <div class="client-picker">
                     <div class="field">
                       <label for="in-client-pick">Client enregistré</label>
-                      <select id="in-client-pick"><option value="">— Nouveau client —</option></select>
+                      <select id="in-client-pick"><option value="">Nouveau client</option></select>
                     </div>
                     <button type="button" class="btn ghost" id="btn-client-forget" style="display:none;">Retirer de la liste</button>
                   </div>
@@ -1408,7 +1404,7 @@ function upsertClient(c){
 function renderClientPicker(selectedName){
   const list = readClients().sort((a,b) => a.name.localeCompare(b.name, 'fr'));
   const sel = document.getElementById('in-client-pick');
-  sel.innerHTML = '<option value="">— Nouveau client —</option>' +
+  sel.innerHTML = '<option value="">Nouveau client</option>' +
     list.map(c => '<option value="' + escapeAttr(c.name) + '">' + escapeHtml(c.name) + '</option>').join('');
   sel.value = selectedName && list.some(c => c.name === selectedName) ? selectedName : '';
   document.getElementById('client-names').innerHTML = list.map(c => '<option value="' + escapeAttr(c.name) + '">').join('');
@@ -1669,7 +1665,7 @@ function renderInvoiceFragment(rec){
       extraRows +
       '<tr class="total"><td class="lbl">Total HT à payer</td><td class="val">' + fmtMoney(rec.totalEur) + ' ' + dev + '</td><td class="val">' + fmtDJF(rec.totalDjf) + ' DJF</td></tr>' +
     '</table></div></div>' +
-    '<div class="inv-footnote">' + (rec.dossier ? 'Dossier N° ' + escapeHtml(rec.dossier) + ' — ' : '') + 'Source : ' + escapeHtml(rec.bcNumber || 'document fournisseur') + (rec.bcDate ? ' du ' + escapeHtml(rec.bcDate) : '') +
+    '<div class="inv-footnote">' + (rec.dossier ? 'Dossier N° ' + escapeHtml(rec.dossier) + '. ' : '') + 'Source : ' + escapeHtml(rec.bcNumber || 'document fournisseur') + (rec.bcDate ? ' du ' + escapeHtml(rec.bcDate) : '') +
       (rec.fournisseur ? ' (fournisseur ' + escapeHtml(rec.fournisseur) + ')' : '') + '. ' +
       'Montants en DJF calculés au taux de ' + rec.rate + ' DJF pour 1 ' + dev + '.</div>' +
     '<div class="inv-signatures">' +
@@ -2031,7 +2027,7 @@ function renderHistoryHeader(){
   const el = document.getElementById('hist-store-bar');
   if (!el) return;
   const folderIco = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>';
-  const tree = '<div class="tree"><span>' + PDF_ROOT + '</span>›<span>' + new Date().getFullYear() + '</span>›<span>' + monthFolder(new Date()) + '</span>›<span>N° facture – Client.pdf</span></div>';
+  const tree = '<div class="tree"><span>' + PDF_ROOT + '</span>›<span>' + new Date().getFullYear() + '</span>›<span>' + monthFolder(new Date()) + '</span>›<span>N° facture - Client.pdf</span></div>';
   if (FS_SUPPORTED && histDirHandle){
     el.innerHTML = '<div class="dirbar"><div class="d-ico">' + folderIco + '</div><div class="d-txt">' +
       '<div class="d-t">Les factures sont rangées dans le dossier « ' + escapeHtml(histDirHandle.name) + ' » de cet ordinateur</div>' +
