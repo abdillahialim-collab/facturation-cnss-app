@@ -23,17 +23,17 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
      Light sky-blue surfaces, one blue accent family, generous rounding.
      ===================================================================== */
   :root{
-    --bg:#F1F6FD; --surface:#FFFFFF; --surface-2:#F6F9FE; --surface-3:#EAF1FB;
-    --line:#D6E1F1; --line-strong:#AFC1DB;
-    --ink:#081226; --ink-2:#26324A; --ink-3:#4F5D77;
-    --brand:#2F6BEA; --brand-deep:#1F55C8; --brand-tint:#E8F0FE; --brand-ink:#1C4CB3; --brand-glow:rgba(47,107,234,.18);
-    --grad-from:#4C8DFF; --grad-to:#2457D6; --sky:#7CC0FF;
-    --side:#FFFFFF; --side-line:#DCE5F3; --side-ink:#1E2A42; --side-ink-2:#56647D;
-    --amber:#9A5410; --amber-tint:#FDF2E3; --green:#1C6A45; --green-tint:#E4F4EA; --red:#C0322A; --red-tint:#FDECEA;
-    --sh-xs:0 1px 2px rgba(30,64,140,.05);
-    --sh-sm:0 1px 2px rgba(30,64,140,.05), 0 4px 12px -4px rgba(30,64,140,.08);
-    --sh-md:0 2px 6px rgba(30,64,140,.04), 0 16px 36px -16px rgba(30,64,140,.22);
-    --sh-lg:0 4px 10px rgba(30,64,140,.06), 0 34px 70px -26px rgba(30,64,140,.38);
+    --bg:#D9E0EA; --surface:#E9EDF3; --surface-2:#F3F5F8; --surface-3:#D2DAE5;
+    --line:#BAC6D5; --line-strong:#8496AD;
+    --ink:#000000; --ink-2:#0F1724; --ink-3:#2A3647;
+    --brand:#1B4DBF; --brand-deep:#143C99; --brand-tint:#C9D8F2; --brand-ink:#0F348A; --brand-glow:rgba(27,77,191,.25);
+    --grad-from:#1B4DBF; --grad-to:#1B4DBF; --sky:#9DB7DE;
+    --side:#E3E8EF; --side-line:#C3CEDC; --side-ink:#000000; --side-ink-2:#2A3647;
+    --amber:#723A00; --amber-tint:#F0DEC2; --green:#0B5230; --green-tint:#C9E5D4; --red:#9A120B; --red-tint:#F2D5D2;
+    --sh-xs:0 1px 1px rgba(20,35,60,.10);
+    --sh-sm:0 1px 2px rgba(20,35,60,.10);
+    --sh-md:0 1px 2px rgba(20,35,60,.10), 0 6px 16px -10px rgba(20,35,60,.30);
+    --sh-lg:0 2px 6px rgba(20,35,60,.12), 0 24px 50px -24px rgba(20,35,60,.40);
     --font:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --mono:'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
     --r-lg:22px; --r:18px; --r-md:14px; --r-sm:12px; --r-xs:8px;
@@ -48,7 +48,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
       --line:#22314F; --line-strong:#30436A;
       --ink:#E6EDFA; --ink-2:#A8B6D0; --ink-3:#6F7FA0;
       --brand:#6EA2FF; --brand-deep:#8DB6FF; --brand-tint:#172A50; --brand-ink:#9CC0FF; --brand-glow:rgba(110,162,255,.25);
-      --grad-from:#5B97FF; --grad-to:#2F63E0; --sky:#3F7FD9;
+      --grad-from:#3D74E6; --grad-to:#3D74E6; --sky:#3F7FD9;
       --side:#0F182C; --side-line:#22314F; --side-ink:#A8B6D0; --side-ink-2:#6F7FA0;
       --amber:#E8A862; --amber-tint:#2E2214; --green:#6BCB98; --green-tint:#12291E; --red:#F48D84; --red-tint:#361B1A;
       --sh-xs:none; --sh-sm:0 1px 2px rgba(0,0,0,.4); --sh-md:0 16px 36px -16px rgba(0,0,0,.75); --sh-lg:0 34px 70px -26px rgba(0,0,0,.85);
@@ -60,7 +60,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
     --line:#22314F; --line-strong:#30436A;
     --ink:#E6EDFA; --ink-2:#A8B6D0; --ink-3:#6F7FA0;
     --brand:#6EA2FF; --brand-deep:#8DB6FF; --brand-tint:#172A50; --brand-ink:#9CC0FF; --brand-glow:rgba(110,162,255,.25);
-    --grad-from:#5B97FF; --grad-to:#2F63E0; --sky:#3F7FD9;
+    --grad-from:#3D74E6; --grad-to:#3D74E6; --sky:#3F7FD9;
     --side:#0F182C; --side-line:#22314F; --side-ink:#A8B6D0; --side-ink-2:#6F7FA0;
     --amber:#E8A862; --amber-tint:#2E2214; --green:#6BCB98; --green-tint:#12291E; --red:#F48D84; --red-tint:#361B1A;
     --sh-xs:none; --sh-sm:0 1px 2px rgba(0,0,0,.4); --sh-md:0 16px 36px -16px rgba(0,0,0,.75); --sh-lg:0 34px 70px -26px rgba(0,0,0,.85);
@@ -71,13 +71,9 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   html{scroll-behavior:smooth;}
   html,body{margin:0;}
   body{
-    color:var(--ink); font-family:var(--font); font-size:14px; line-height:1.5;
+    color:var(--ink); font-family:var(--font); font-size:15px; font-weight:500; line-height:1.5;
     -webkit-font-smoothing:antialiased; min-height:100dvh;
-    background:
-      radial-gradient(900px 520px at 105% -12%, color-mix(in srgb, var(--sky) 26%, transparent), transparent 62%),
-      radial-gradient(760px 520px at -12% 112%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 60%),
-      var(--bg);
-    background-attachment:fixed;
+    background:var(--bg);
   }
   h1,h2,h3{text-wrap:balance; margin:0;}
   p{text-wrap:pretty;}
@@ -89,7 +85,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .skip-link:focus{top:10px;}
   .icon{width:16px; height:16px; flex-shrink:0;}
   .icon-sm{width:14px; height:14px; flex-shrink:0;}
-  .hint{color:var(--ink-3); font-size:.78rem; max-width:72ch;}
+  .hint{color:var(--ink-3); font-size:.84rem; max-width:72ch;}
   .hint.mt{margin-top:10px;}
   .mono{font-family:var(--mono); font-variant-numeric:tabular-nums;}
   input[type=checkbox]{width:16px; height:16px; accent-color:var(--brand); cursor:pointer; margin:0; vertical-align:middle;}
@@ -103,7 +99,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
     display:flex; flex-direction:column; padding:18px 14px 14px; gap:20px; overflow:hidden;
   }
   .sidebar::before{content:""; position:absolute; inset:0 0 auto 0; height:150px; pointer-events:none;
-    background:linear-gradient(180deg, color-mix(in srgb, var(--sky) 22%, transparent), transparent);}
+    display:none;}
   .side-brand{position:relative; display:flex; flex-direction:column; gap:14px; padding:2px 4px 16px; border-bottom:1px solid var(--side-line);}
   .side-logo{background:#fff; border:1px solid #E3EBF7; border-radius:18px; padding:8px 12px; display:flex; align-items:center; justify-content:center; height:62px; box-shadow:var(--sh-sm);}
   .side-logo img{max-height:44px; max-width:100%; width:auto;}
@@ -113,21 +109,21 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .side-label{font-size:.7rem; color:var(--side-ink-2); font-weight:500; padding:0 12px 8px; letter-spacing:.02em;}
   .side-nav button{
     position:relative; display:flex; align-items:center; gap:11px; width:100%;
-    background:none; border:none; color:var(--side-ink); font-family:inherit; font-size:.9rem; font-weight:600;
+    background:none; border:none; color:var(--side-ink); font-family:inherit; font-size:.96rem; font-weight:600;
     padding:10px 12px; border-radius:14px; cursor:pointer; text-align:left;
     transition:background .2s var(--ease), color .2s var(--ease), box-shadow .2s var(--ease), transform .1s var(--ease);
   }
   .side-nav button svg{width:18px; height:18px; color:var(--brand);}
   .side-nav button:hover{background:var(--brand-tint); color:var(--brand-ink);}
   .side-nav button:active{transform:scale(.985);}
-  .side-nav button.active{background:linear-gradient(135deg, var(--grad-from), var(--grad-to)); color:#fff; box-shadow:0 10px 22px -10px rgba(36,87,214,.75);}
+  .side-nav button.active{background:var(--brand); color:#fff; box-shadow:var(--sh-sm);}
   .side-nav button.active svg{color:#fff;}
   .side-nav .count{margin-left:auto; font-family:var(--mono); font-size:.7rem; color:var(--brand-ink); background:var(--brand-tint); padding:1px 8px; border-radius:20px;}
   .side-nav button.active .count{background:rgba(255,255,255,.22); color:#fff;}
   .side-nav .count:empty{display:none;}
   .side-bottom{margin-top:auto; display:flex; flex-direction:column; gap:10px;}
   .side-foot{font-size:.75rem; color:var(--ink-2); padding:12px 14px; border-radius:16px; line-height:1.45;
-    background:linear-gradient(135deg, var(--brand-tint), color-mix(in srgb, var(--sky) 14%, var(--surface)));}
+    background:var(--surface-3);}
   .side-foot b{display:block; color:var(--ink); font-weight:600; margin-bottom:3px;}
   .side-foot .dot{display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px; vertical-align:1px;}
   .theme-seg{display:flex; padding:4px; gap:2px; background:var(--surface-3); border-radius:999px;}
@@ -149,7 +145,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
     border-radius:0 0 22px 22px;
   }
   .head-titles{min-width:0;}
-  .crumb{font-size:.76rem; color:var(--ink-2); font-weight:500;}
+  .crumb{font-size:.82rem; color:var(--ink-2); font-weight:500;}
   .crumb span{margin:0 6px; opacity:.6;}
   .main-head h1{font-size:1.5rem; font-weight:600; letter-spacing:-.03em; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .head-actions{margin-left:auto; display:flex; align-items:center; gap:8px; flex-wrap:nowrap;}
@@ -160,11 +156,11 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   button.btn{
     display:inline-flex; align-items:center; justify-content:center; gap:7px; font-family:inherit; font-size:.85rem; font-weight:500;
     height:38px; padding:0 16px; border-radius:999px; border:1px solid transparent; cursor:pointer;
-    background:linear-gradient(135deg, var(--grad-from), var(--grad-to)); color:#fff; white-space:nowrap;
-    box-shadow:0 8px 18px -10px rgba(36,87,214,.7), inset 0 1px 0 rgba(255,255,255,.2);
+    background:var(--brand); color:#fff; white-space:nowrap;
+    box-shadow:var(--sh-sm);
     transition:background .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease), box-shadow .18s var(--ease), transform .1s var(--ease);
   }
-  button.btn:hover{filter:brightness(1.06); box-shadow:0 12px 24px -12px rgba(36,87,214,.8), inset 0 1px 0 rgba(255,255,255,.2);}
+  button.btn:hover{background:var(--brand-deep);}
   button.btn:active:not(:disabled){transform:translateY(1px) scale(.985);}
   button.btn.secondary{background:var(--surface); color:var(--ink); border-color:var(--line); box-shadow:var(--sh-sm);}
   button.btn.secondary:hover{background:var(--brand-tint); border-color:color-mix(in srgb, var(--brand) 35%, transparent); color:var(--brand-ink); filter:none;}
@@ -186,10 +182,10 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--sh-md); margin-bottom:18px;}
   .card-head{display:flex; align-items:flex-start; gap:13px; padding:20px 24px 0;}
   .card-icon{width:38px; height:38px; border-radius:13px; color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0;
-    background:linear-gradient(135deg, var(--grad-from), var(--grad-to)); box-shadow:0 8px 16px -8px rgba(36,87,214,.7);}
+    background:var(--brand); box-shadow:var(--sh-sm);}
   .card-icon svg{width:18px; height:18px;}
   .card-title{font-size:1.02rem; font-weight:600; letter-spacing:-.02em; line-height:1.3;}
-  .card-desc{font-size:.82rem; color:var(--ink-2); margin-top:2px;}
+  .card-desc{font-size:.88rem; color:var(--ink-2); margin-top:2px;}
   .card-head .aside{margin-left:auto; display:flex; align-items:center; gap:8px; padding-top:4px;}
   .card-body{padding:18px 24px 24px;}
   .card-body.flush{padding:0;}
@@ -206,11 +202,11 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .field.span-2{grid-column:span 2;}
   .field.span-all{grid-column:1 / -1;}
   @media(max-width:620px){ .field.span-2{grid-column:auto;} }
-  label{display:block; font-size:.8rem; color:var(--ink-2); margin-bottom:6px; font-weight:600;}
+  label{display:block; font-size:.87rem; color:var(--ink); margin-bottom:6px; font-weight:600;}
   .req{color:var(--red); margin-left:3px;}
   input[type=text], input[type=number], input[type=date], input[type=email], input[type=tel], input[type=search], select{
     width:100%; height:40px; padding:0 13px; border:1px solid var(--line); border-radius:var(--r-sm);
-    font-size:.9rem; font-weight:500; background:var(--surface-2); color:var(--ink); font-family:inherit;
+    font-size:.97rem; font-weight:500; background:var(--surface-2); color:var(--ink); font-family:inherit;
     transition:border-color .16s var(--ease), box-shadow .16s var(--ease), background .16s var(--ease);
   }
   input[type=number]{font-family:var(--mono); font-size:.84rem; font-variant-numeric:tabular-nums;}
@@ -253,14 +249,14 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   /* Import */
   .dropzone{
     position:relative; border:1.5px dashed color-mix(in srgb, var(--brand) 35%, var(--line)); border-radius:var(--r); padding:42px 20px 36px; text-align:center;
-    color:var(--ink-2); cursor:pointer; background:linear-gradient(180deg, var(--surface-2), color-mix(in srgb, var(--sky) 8%, var(--surface)));
+    color:var(--ink-2); cursor:pointer; background:var(--surface-2);
     transition:border-color .2s var(--ease), background .2s var(--ease);
   }
   .dropzone:hover, .dropzone:focus-visible, .dropzone.drag{border-color:var(--brand); background:var(--brand-tint);}
   .dropzone.drag{border-style:solid;}
   .dropzone input{display:none;}
-  .dropzone .up{width:54px; height:54px; margin:0 auto 14px; border-radius:18px; background:linear-gradient(135deg, var(--grad-from), var(--grad-to)); border:none;
-    display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 12px 24px -12px rgba(36,87,214,.8); transition:transform .25s var(--ease);}
+  .dropzone .up{width:54px; height:54px; margin:0 auto 14px; border-radius:18px; background:var(--brand); border:none;
+    display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:var(--sh-sm); transition:transform .25s var(--ease);}
   .dropzone:hover .up, .dropzone.drag .up{transform:translateY(-3px);}
   .dropzone strong{color:var(--ink); font-weight:600;}
   .dropzone .formats{display:inline-flex; gap:6px; margin-top:14px;}
@@ -277,7 +273,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
 
   /* Items table */
   .items-count{font-family:var(--mono); font-size:.72rem; color:var(--brand-ink); background:var(--brand-tint); padding:3px 10px; border-radius:20px;}
-  table.items{width:100%; min-width:540px; border-collapse:separate; border-spacing:0; font-size:.85rem;}
+  table.items{width:100%; min-width:540px; border-collapse:separate; border-spacing:0; font-size:.92rem;}
   table.items th{text-align:left; font-size:.75rem; color:var(--ink-2); font-weight:600; padding:10px 10px; background:var(--surface-2);
     border-top:1px solid var(--line); border-bottom:1px solid var(--line); white-space:nowrap;}
   table.items th:first-child{padding-left:24px;} table.items th:last-child{padding-right:16px;}
@@ -286,7 +282,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   table.items td:first-child{padding-left:16px;}
   table.items tbody tr{transition:background .15s;}
   table.items tbody tr:hover{background:var(--surface-2);}
-  table.items input{border:1px solid transparent; background:transparent; height:34px; padding:0 6px; font-size:.85rem; border-radius:var(--r-xs); width:100%;}
+  table.items input{border:1px solid transparent; background:transparent; height:36px; padding:0 6px; font-size:.92rem; font-weight:500; border-radius:var(--r-xs); width:100%;}
   table.items input:hover{background:var(--surface); border-color:var(--line);}
   table.items input:focus{border-color:var(--brand); background:var(--surface); box-shadow:0 0 0 3px var(--brand-glow);}
   table.items input.ref{font-family:var(--mono); font-size:.78rem; color:var(--ink-2);}
@@ -303,14 +299,14 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .fees{padding:4px 22px 22px;}
 
   /* Client picker */
-  .client-picker{display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap; margin-bottom:18px; padding:16px; background:linear-gradient(135deg, var(--brand-tint), color-mix(in srgb, var(--sky) 10%, var(--surface))); border:1px solid color-mix(in srgb, var(--brand) 14%, transparent); border-radius:var(--r);}
+  .client-picker{display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap; margin-bottom:18px; padding:16px; background:var(--surface-3); border:1px solid var(--line); border-radius:var(--r);}
   .client-picker select{background-color:var(--surface);}
   .client-picker .field{flex:1; min-width:220px;}
 
   /* Totals summary */
   .sum{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; margin-top:20px;}
   .sum > div{background:var(--surface-2); padding:13px 16px; border-radius:var(--r-md); border:1px solid var(--line);}
-  .sum > div.main{background:linear-gradient(135deg, var(--grad-from), var(--grad-to)); border-color:transparent; box-shadow:0 12px 24px -14px rgba(36,87,214,.8);}
+  .sum > div.main{background:var(--brand); border-color:transparent; box-shadow:var(--sh-sm);}
   .sum .main .k{color:rgba(255,255,255,.8);}
   .sum .k{display:block; font-size:.72rem; color:var(--ink-3); margin-bottom:3px;}
   .sum .v{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.95rem; font-weight:500; color:var(--ink); white-space:nowrap;}
@@ -357,7 +353,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .kpis{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; margin-bottom:18px;}
   @media(max-width:1100px){ .kpis{grid-template-columns:repeat(2, minmax(0,1fr));} }
   .kpi{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:18px 20px; box-shadow:var(--sh-md);}
-  .kpi.hero{background:linear-gradient(135deg, var(--grad-from), var(--grad-to)); border-color:transparent; color:#fff; box-shadow:0 18px 34px -18px rgba(36,87,214,.85);}
+  .kpi.hero{background:var(--brand); border-color:transparent; color:#fff; box-shadow:var(--sh-md);}
   .kpi.hero .k, .kpi.hero .s, .kpi.hero .v small{color:rgba(255,255,255,.8);} .kpi.hero .k svg{color:#fff;}
   .kpi .k{font-size:.78rem; color:var(--ink-2); font-weight:500; display:flex; align-items:center; gap:7px;}
   .kpi .k svg{width:15px; height:15px; color:var(--brand);}
@@ -366,7 +362,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .kpi .s{font-size:.74rem; color:var(--ink-3); margin-top:2px;}
   .toolbar{display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:16px 20px; border-bottom:1px solid var(--line);}
   .toolbar .badge-row{margin-left:auto;}
-  table.list{width:100%; min-width:760px; border-collapse:separate; border-spacing:0; font-size:.86rem;}
+  table.list{width:100%; min-width:760px; border-collapse:separate; border-spacing:0; font-size:.92rem;}
   table.list th{padding:10px 14px; background:var(--surface-2); border-bottom:1px solid var(--line); text-align:left; font-size:.75rem; color:var(--ink-2); font-weight:600; white-space:nowrap;}
   table.list th:first-child, table.list td:first-child{padding-left:20px;}
   table.list td{padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:middle;}
@@ -381,7 +377,7 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   table.list .sub{display:block; font-size:.76rem; color:var(--ink-3); margin-top:1px;}
   .row-actions{display:flex; gap:2px; justify-content:flex-end; flex-wrap:nowrap;}
   .empty{color:var(--ink-2); font-size:.9rem; padding:56px 16px 52px; text-align:center;}
-  .empty .big-i{width:62px; height:62px; margin:0 auto 16px; color:#fff; background:linear-gradient(135deg, var(--grad-from), var(--grad-to)); border-radius:20px; box-shadow:0 14px 28px -14px rgba(36,87,214,.8); display:flex; align-items:center; justify-content:center;}
+  .empty .big-i{width:62px; height:62px; margin:0 auto 16px; color:#fff; background:var(--brand); border-radius:20px; box-shadow:var(--sh-sm); display:flex; align-items:center; justify-content:center;}
   .empty .big-i svg{width:26px; height:26px;}
   .empty .t{font-weight:600; color:var(--ink); font-size:.98rem; margin-bottom:4px;}
   .empty p{margin:0 auto 18px; max-width:46ch; color:var(--ink-3); font-size:.84rem;}
@@ -392,8 +388,8 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
   .dirbar{display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:16px 18px; margin-bottom:18px; border-radius:var(--r-lg);
     background:var(--surface); border:1px solid var(--line); box-shadow:var(--sh-md);}
   .dirbar .d-ico{width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff;
-    background:linear-gradient(135deg, var(--grad-from), var(--grad-to));}
-  .dirbar.warn .d-ico{background:linear-gradient(135deg, #F3B562, #D9832B);}
+    background:var(--brand);}
+  .dirbar.warn .d-ico{background:#9A5410;}
   .dirbar .d-txt{flex:1; min-width:240px;}
   .dirbar .d-t{font-weight:600; font-size:.92rem;}
   .dirbar .d-s{font-size:.8rem; color:var(--ink-3); margin-top:2px;}
@@ -624,9 +620,9 @@ try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || 
                 </div>
                 <div class="card-body">
                   <div class="grid cols-3">
-                    <div class="field"><label for="doc-dossier">N° de dossier</label><input type="text" id="doc-dossier" placeholder="ex. DJCS1BC2609000116"></div>
-                    <div class="field"><label for="doc-numero">N° du document</label><input type="text" id="doc-numero"></div>
+                    <div class="field span-2"><label for="doc-dossier">N° de dossier</label><input type="text" id="doc-dossier" placeholder="ex. DJCS1BC2609000116"></div>
                     <div class="field"><label for="doc-date">Date du document</label><input type="date" id="doc-date"></div>
+                    <div class="field"><label for="doc-numero">N° du document</label><input type="text" id="doc-numero"></div>
                     <div class="field span-2"><label for="doc-fournisseur">Fournisseur</label><input type="text" id="doc-fournisseur"></div>
                     <div class="field"><label for="doc-devise">Devise des prix</label><input type="text" id="doc-devise" class="upper" maxlength="3"></div>
                   </div>
