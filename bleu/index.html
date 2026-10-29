@@ -6,13 +6,15 @@
 <title>Facturation CNSS</title>
 <meta name="description" content="Génération de factures CNSS à partir d'un bon de commande ou d'une facture fournisseur (Excel ou PDF).">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%230F6E77%27/%3E%3Cpath d=%27M10 8h9l4 4v12H10z%27 fill=%27none%27 stroke=%27white%27 stroke-width=%272%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M13 16h7M13 20h5%27 stroke=%27white%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.sheetjs.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' data: blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha384-ZZ1pncU3bQe8y31yfZdMFdSpttDoPmOZg2wguVK9almUodir1PghgT0eY7Mrty8H" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha384-JcnsjUPPylna1s1fvi1u12X5qjY5OL56iySh75FdtrwhO/SWXgMjoVqcKyIIWOLk" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha384-/1qUCSGwTur9vjf/z9lmu/eCUYbpOTgSjmpbMQZ1/CtX2v/WcAIKqRv+U1DUCG6e" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG" crossorigin="anonymous"></script>
 <script>
 /* Apply the saved appearance before first paint (auto = follow the computer setting) */
 try { const t = localStorage.getItem('facturation_theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch(e){}
@@ -885,6 +887,8 @@ function escapeHtml(s){
   return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 function escapeAttr(s){ return escapeHtml(s).replace(/`/g,'&#96;'); }
+/* A value passed as a string argument inside an inline handler attribute */
+function jsArg(v){ return escapeAttr(JSON.stringify(String(v == null ? '' : v))); }
 
 /* ================= Heuristic parser (fast path for the familiar CNSS "Bon de commande" layout) =================
    Fixed layout: A13=numéro, A17=date, K12=fournisseur, D21..D24=frais,
@@ -1062,7 +1066,7 @@ function pdfReady(){
 
 /* Reconstruct text lines from a PDF, grouping items by their vertical position. */
 async function pdfToLines(arrayBuffer){
-  const pdf = await window.pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  const pdf = await window.pdfjsLib.getDocument({ data: arrayBuffer, isEvalSupported: false }).promise;
   const allLines = [];
   for (let p = 1; p <= pdf.numPages; p++){
     const page = await pdf.getPage(p);
@@ -1452,8 +1456,8 @@ function renderItemsTable(){
     '<tr data-i="' + i + '">' +
       '<td><input type="text" class="ref" value="' + escapeAttr(it.code) + '"></td>' +
       '<td><input type="text" class="desig ' + (it.designation ? '' : 'bad') + '" value="' + escapeAttr(it.designation) + '" placeholder="Désignation"></td>' +
-      '<td><input type="number" class="qty num ' + (it.qty ? '' : 'bad') + '" value="' + it.qty + '" step="1"></td>' +
-      '<td><input type="number" class="pu num ' + (it.pu ? '' : 'bad') + '" value="' + it.pu + '" step="0.01"></td>' +
+      '<td><input type="number" class="qty num ' + (it.qty ? '' : 'bad') + '" value="' + (Number(it.qty) || 0) + '" step="1"></td>' +
+      '<td><input type="number" class="pu num ' + (it.pu ? '' : 'bad') + '" value="' + (Number(it.pu) || 0) + '" step="0.01"></td>' +
       '<td class="montant">' + fmtMoney(it.montant) + '</td>' +
       '<td class="rm"><button type="button" title="Supprimer la ligne">✕</button></td>' +
     '</tr>'
@@ -1608,6 +1612,7 @@ function buildRecord(){
 /* ================= Rendering the invoice ================= */
 function renderInvoiceFragment(rec){
   const dev = escapeHtml(rec.devise);
+  const rate = escapeHtml(String(Number(rec.rate) || 0).replace('.', ','));
   const rows = rec.items.map(it => (
     '<tr>' +
       '<td class="code">' + escapeHtml(it.code) + '</td>' +
@@ -1653,7 +1658,7 @@ function renderInvoiceFragment(rec){
       '</div>' +
       '<div class="inv-party right">' +
         '<div class="l">Taux de conversion</div>' +
-        '<div class="rate">1 ' + dev + ' = ' + rec.rate + ' DJF</div>' +
+        '<div class="rate">1 ' + dev + ' = ' + rate + ' DJF</div>' +
       '</div>' +
     '</div>' +
     '<table class="inv-table">' +
@@ -1667,7 +1672,7 @@ function renderInvoiceFragment(rec){
     '</table></div></div>' +
     '<div class="inv-footnote">' + (rec.dossier ? 'Dossier N° ' + escapeHtml(rec.dossier) + '. ' : '') + 'Source : ' + escapeHtml(rec.bcNumber || 'document fournisseur') + (rec.bcDate ? ' du ' + escapeHtml(rec.bcDate) : '') +
       (rec.fournisseur ? ' (fournisseur ' + escapeHtml(rec.fournisseur) + ')' : '') + '. ' +
-      'Montants en DJF calculés au taux de ' + rec.rate + ' DJF pour 1 ' + dev + '.</div>' +
+      'Montants en DJF calculés au taux de ' + rate + ' DJF pour 1 ' + dev + '.</div>' +
     '<div class="inv-signatures">' +
       '<div class="inv-sign"><div class="inv-sign-title">Le fournisseur</div><div class="inv-sign-sub">Date, signature et cachet</div><div class="inv-sign-space"></div></div>' +
       '<div class="inv-sign"><div class="inv-sign-title">Le client</div><div class="inv-sign-sub">Date, signature et cachet</div><div class="inv-sign-space"></div></div>' +
@@ -2221,10 +2226,10 @@ function renderHistTable(){
       '<td class="num">' + fmtMoney(r.totalEur) + ' ' + escapeHtml(r.devise||'') + '</td>' +
       '<td class="num strong">' + fmtDJF(r.totalDjf) + '</td>' +
       '<td><div class="row-actions">' +
-        '<button class="btn ghost small" onclick="reviewHistoryDoc(\'' + r.id + '\')">Voir</button>' +
-        '<button class="btn ghost small" onclick="downloadHistoryDoc(\'' + r.id + '\',\'pdf\')">PDF</button>' +
-        '<button class="btn ghost small" onclick="downloadHistoryDoc(\'' + r.id + '\',\'xlsx\')">Excel</button>' +
-        '<button class="btn danger small icon-only" title="Supprimer" aria-label="Supprimer" onclick="deleteHistoryDoc(\'' + r.id + '\')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button>' +
+        '<button class="btn ghost small" onclick="reviewHistoryDoc(' + jsArg(r.id) + ')">Voir</button>' +
+        '<button class="btn ghost small" onclick="downloadHistoryDoc(' + jsArg(r.id) + ',&quot;pdf&quot;)">PDF</button>' +
+        '<button class="btn ghost small" onclick="downloadHistoryDoc(' + jsArg(r.id) + ',&quot;xlsx&quot;)">Excel</button>' +
+        '<button class="btn danger small icon-only" title="Supprimer" aria-label="Supprimer" onclick="deleteHistoryDoc(' + jsArg(r.id) + ')"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button>' +
       '</div></td>' +
     '</tr>'
   )).join('');
@@ -2307,6 +2312,29 @@ document.getElementById('btn-backup').addEventListener('click', async () => {
   toast('Sauvegarde téléchargée : ' + recs.length + ' facture(s), ' + data.clients.length + ' client(s).');
 });
 document.getElementById('btn-restore').addEventListener('click', () => document.getElementById('restore-input').click());
+const rTxt = v => v == null ? '' : String(v).slice(0, 500);
+const rNum = v => { const n = Number(v); return isFinite(n) ? n : 0; };
+function cleanClient(c){
+  if (typeof c === 'string') c = { name:c };
+  if (!c || typeof c !== 'object' || !rTxt(c.name).trim()) return null;
+  return { name:rTxt(c.name).trim(), contact:rTxt(c.contact), address:rTxt(c.address), phone:rTxt(c.phone), email:rTxt(c.email), nif:rTxt(c.nif) };
+}
+function cleanRecord(r){
+  if (!r || typeof r !== 'object') return null;
+  const client = cleanClient(r.client);
+  if (!client) return null;
+  const rec = {
+    invoiceNumber:rTxt(r.invoiceNumber) || 'FACT', invoiceDate:rTxt(r.invoiceDate), dossier:rTxt(r.dossier),
+    bcNumber:rTxt(r.bcNumber), bcDate:rTxt(r.bcDate), fournisseur:rTxt(r.fournisseur), devise:rTxt(r.devise).toUpperCase().slice(0,3) || 'EUR',
+    client, rate:rNum(r.rate) || 1,
+    items:(Array.isArray(r.items) ? r.items : []).filter(it => it && typeof it === 'object').map(it => ({
+      code:rTxt(it.code), designation:rTxt(it.designation), qty:rNum(it.qty), pu:rNum(it.pu), montant:rNum(it.montant) })),
+    extras:(Array.isArray(r.extras) ? r.extras : []).filter(e => e && typeof e === 'object').map(e => ({ label:rTxt(e.label), value:rNum(e.value) })),
+    subtotalEur:rNum(r.subtotalEur), totalEur:rNum(r.totalEur), totalDjf:rNum(r.totalDjf), createdAt:rTxt(r.createdAt) || new Date().toISOString(),
+  };
+  if (r.id != null) rec.id = safeDocId(r.id);
+  return rec;
+}
 document.getElementById('restore-input').addEventListener('change', async e => {
   const file = e.target.files[0]; e.target.value = '';
   if (!file) return;
@@ -2315,9 +2343,10 @@ document.getElementById('restore-input').addEventListener('change', async e => {
   if (!data || data.app !== 'facturation-cnss' || !Array.isArray(data.invoices)){ toast('Ce fichier n\'est pas une sauvegarde de Facturation CNSS.', 'error'); return; }
   if (!confirm('Restaurer ' + data.invoices.length + ' facture(s) et ' + (data.clients || []).length + ' client(s) ?\nLes factures portant le même identifiant seront remplacées.')) return;
   try {
-    for (const rec of data.invoices) await storeRecord(rec, true);
+    const recs = data.invoices.map(cleanRecord).filter(Boolean);
+    for (const rec of recs) await storeRecord(rec, true);
     const known = readClients();
-    (data.clients || []).forEach(c => { if (c && c.name && !known.some(k => clientKey(k.name) === clientKey(c.name))) known.push(c); });
+    (Array.isArray(data.clients) ? data.clients : []).map(cleanClient).forEach(c => { if (c && !known.some(k => clientKey(k.name) === clientKey(c.name))) known.push(c); });
     writeClients(known);
     renderClientPicker(document.getElementById('in-client-pick').value);
     await loadHistory();
